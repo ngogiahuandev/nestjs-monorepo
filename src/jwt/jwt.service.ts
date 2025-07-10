@@ -75,4 +75,26 @@ export class JwtService {
       return false;
     }
   }
+
+  /**
+   * Decodes a JWT and returns its payload (including exp).
+   */
+  decodeToken(token: string): any {
+    return this.jwt.decode(token);
+  }
+
+  /**
+   * Signs a refresh token with a custom expiration timestamp (in seconds since epoch).
+   */
+  signRefreshTokenWithExp(
+    payload: JwtPayload,
+    exp: number,
+    options?: JwtSignOptions,
+  ): string {
+    return this.jwt.sign(payload, {
+      expiresIn: exp - Math.floor(Date.now() / 1000),
+      secret: env.REFRESH_TOKEN_SECRET,
+      ...options,
+    });
+  }
 }

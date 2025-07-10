@@ -2,6 +2,7 @@ import {
   ConflictException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateUserInput } from 'src/users/dto/create-user.input';
@@ -86,6 +87,15 @@ export class UsersService {
     const user = await this.prisma.user.delete({
       where: { id },
     });
+    return new UserEntity(user);
+  }
+
+  async validateUser(email: string, password: string): Promise<UserEntity> {
+    const user = await this.getUserByEmail(email);
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
     return new UserEntity(user);
   }
 }
