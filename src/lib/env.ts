@@ -14,6 +14,10 @@ const envSchema = z.object({
   DATABASE_URL: z.string().url(),
   REDIS_HOST: z.string().default('localhost'),
   REDIS_PORT: z.coerce.number().default(6379),
+  ACCESS_TOKEN_SECRET: z.string().default(''),
+  ACCESS_TOKEN_EXPIRE_IN: z.string().default('15m'),
+  REFRESH_TOKEN_SECRET: z.string().default(''),
+  REFRESH_TOKEN_EXPIRE_IN: z.string().default('7d'),
 });
 
 // Parse & validate
