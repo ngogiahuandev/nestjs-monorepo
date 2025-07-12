@@ -18,6 +18,18 @@ const envSchema = z.object({
   ACCESS_TOKEN_EXPIRE_IN: z.string().default('15m'),
   REFRESH_TOKEN_SECRET: z.string().default(''),
   REFRESH_TOKEN_EXPIRE_IN: z.string().default('7d'),
+  POSTGRES_USER: z.string().default('postgres'),
+  POSTGRES_PASSWORD: z.string().default('postgres'),
+  POSTGRES_DB: z.string().default('postgres'),
+  MINIO_TOKEN: z.string().default('MINIO_INJECT_TOKEN'),
+  MINIO_PORT: z.coerce.number().default(9000),
+  MINIO_CONSOLE_PORT: z.coerce.number().default(8000),
+  MINIO_USER: z.string().default('admin'),
+  MINIO_PASSWORD: z.string().default('veryhardpassword'),
+  MINIO_BUCKET: z.string().default('main'),
+  MINIO_ENDPOINT: z.string().default('localhost'),
+  MINIO_ACCESS_KEY: z.string().default(''),
+  MINIO_SECRET_KEY: z.string().default(''),
 });
 
 // Parse & validate

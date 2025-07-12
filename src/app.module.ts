@@ -9,6 +9,7 @@ import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { MinioModule } from 'src/minio/minio.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { AuthModule } from './auth/auth.module';
     RedisModule,
     UsersModule,
     AuthModule,
+    MinioModule,
   ],
   controllers: [AppController],
   providers: [AppService],
