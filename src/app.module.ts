@@ -10,6 +10,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { MinioModule } from 'src/minio/minio.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { MinioModule } from 'src/minio/minio.module';
     UsersModule,
     AuthModule,
     MinioModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [AppService],

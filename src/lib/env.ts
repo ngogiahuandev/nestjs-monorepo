@@ -30,6 +30,7 @@ const envSchema = z.object({
   MINIO_ENDPOINT: z.string().default('localhost'),
   MINIO_ACCESS_KEY: z.string().default(''),
   MINIO_SECRET_KEY: z.string().default(''),
+  MINIO_PUBLIC_URL: z.string().default(''),
 });
 
 // Parse & validate
